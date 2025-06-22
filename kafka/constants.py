@@ -1,0 +1,10 @@
+INPUT_CSV = '/Users/bhuvanshree/ml/radiation_tracker/data/measurements-out.csv'
+SORTED_CHUNK_DIR = '/Users/bhuvanshree/ml/radiation_tracker/sorted_chunks'
+FULLY_SORTED_CSV = 'fully_sorted.csv'
+CHUNK_SIZE = 1_000_000  
+OUTPUT_FILE = '/Users/bhuvanshree/ml/radiation_tracker/data/fully_sorted.csv'
+TOPIC = 'radiation-data'
+SORT_COL = 'Captured Time'
+PLAYBACK_SPEED = 60 
+NUM_PARTITIONS = 250
+REPLICATION_FACTOR = 3

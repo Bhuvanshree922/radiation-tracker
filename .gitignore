@@ -1,0 +1,9 @@
+.DS_Store
+sorted_chunks/
+data/
+*.csv
+*.json
+*.parquet
+*.avro
+*.orc
+
