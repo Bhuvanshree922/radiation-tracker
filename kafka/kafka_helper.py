@@ -73,6 +73,7 @@ def send_producer(producer, chunk, playback_speed=PLAYBACK_SPEED):
                 value=json.dumps(safe_data),
                 callback=delivery_report
             )
+            print(f"Message: {safe_data}")
 
         last_group_time = group_time
 

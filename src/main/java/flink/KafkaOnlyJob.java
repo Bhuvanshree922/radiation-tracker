@@ -13,15 +13,21 @@ public class KafkaOnlyJob {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
         KafkaSource<String> source = KafkaSource.<String>builder()
-                .setBootstrapServers("kafka-1:29092,kafka-2:29093") // ✅ Not localhost:9092
-                .setTopics("radiation-data")         // ✅ Use the actual topic you created
+                .setBootstrapServers("kafka-1:29092,kafka-2:29093") 
+                .setTopics("radiation-data-1")        
                 .setGroupId("flink-consumer")
                 .setStartingOffsets(OffsetsInitializer.earliest())
                 .setValueOnlyDeserializer(new SimpleStringSchema())
                 .build();
 
         DataStream<String> stream = env.fromSource(source, WatermarkStrategy.noWatermarks(), "KafkaSource");
-        stream.print();  // print to stdout
+        // stream.print("KafkaStream----");  
+        // env.setParallelism(10);
+        stream.map(value -> {
+    System.err.println("RECEIVED: " + value);  // force to stderr
+    return value;
+    }).print();
+
 
         env.execute("Kafka Only Flink Job");
     }
