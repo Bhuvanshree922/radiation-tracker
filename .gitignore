@@ -7,3 +7,13 @@ data/
 *.avro
 *.orc
 
+
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+
+# Ignore Maven target folder
+target/
+
+# Ignore macOS metadata files
+.DS_Store
